@@ -19,7 +19,6 @@ class ExchangeRate:
 
         parser.add_argument('command', help='Command to run')
 
-        # print(sys.argv[1:2])
         args = parser.parse_args(sys.argv[1:2])
         if not hasattr(self, args.command):
             print("Unrecognized command")
@@ -29,7 +28,11 @@ class ExchangeRate:
         getattr(self, args.command)()
         exit(0)
 
+
     def history(self):
+        """
+        Function to display the historical exchange rate for the base currency to required currency for a particular date range
+        """
         parser = argparse.ArgumentParser(description="Historical exchange rate for currencies",
                                          usage="please run this command for e.g. exrates history --start 2021-02-01 "
                                                "--end 2021-02-02 --base USD --symbol EUR CAD")
@@ -46,7 +49,7 @@ class ExchangeRate:
             datetime.strptime(args.start, '%Y-%m-%d')
             datetime.strptime(args.end, '%Y-%m-%d')
         except ValueError:
-            raise SystemExit("Incorrect data format, should be YYYY-MM-DD")
+            raise SystemExit("Incorrect date format, should be YYYY-MM-DD")
 
         if args.start > args.end:
             raise SystemExit("Invalid date, start date cannot be greater than end date")
@@ -65,7 +68,11 @@ class ExchangeRate:
         except Exception:
             raise SystemExit("Something went wrong! Please try again with different input")
 
+
     def convert(self):
+        """
+        Function that converts the rate for a amount from base currency to required currency
+        """
         parser = argparse.ArgumentParser(description="Convert amount for currencies",
                                          usage="please run this command for e.g. exrates convert --date 2021-02-01 "
                                                "--base USD --symbol EUR --amount 50")
@@ -85,7 +92,7 @@ class ExchangeRate:
         try:
             datetime.strptime(args.date, '%Y-%m-%d')
         except ValueError:
-            raise SystemExit("Incorrect data format, should be YYYY-MM-DD")
+            raise SystemExit("Incorrect date format, should be YYYY-MM-DD")
 
         try:
             url = f"https://api.frankfurter.app/{args.date}?from={args.base}&to={args.symbol}&amount={amt}"

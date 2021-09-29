@@ -80,7 +80,7 @@ def test_convert_invalid_date(capsys):
     out, err = capsys.readouterr()
 
     assert exit_status == 1
-    assert err in "Incorrect data format, should be YYYY-MM-DD"
+    assert err in "Incorrect date format, should be YYYY-MM-DD"
 
 
 def test_history_invalid_start_date(capsys):
@@ -88,7 +88,7 @@ def test_history_invalid_start_date(capsys):
     out, err = capsys.readouterr()
 
     assert exit_status == 1
-    assert err in "Incorrect data format, should be YYYY-MM-DD"
+    assert err in "Incorrect date format, should be YYYY-MM-DD"
 
 
 def test_history_invalid_end_date(capsys):
@@ -96,4 +96,4 @@ def test_history_invalid_end_date(capsys):
     out, err = capsys.readouterr()
 
     assert exit_status == 1
-    assert err in "Incorrect data format, should be YYYY-MM-DD"
+    assert err in "Incorrect date format, should be YYYY-MM-DD"

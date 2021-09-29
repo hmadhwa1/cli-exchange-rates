@@ -30,6 +30,7 @@ setup(
     extras_require={
         "dev": [
             "pytest>=3.7",
+            "mock>=4.0.3",
         ],
     },
     python_requires='>=2.7',

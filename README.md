@@ -42,4 +42,18 @@ pip install -e .
 ```
 pip install -e .[dev]
 ```
+*Please Note. for Zsh use quote*
+```
+pip install -e .'[dev]'
+```
 For enhancements please raise an issue/PR.
+
+### Run PyTest
+#### 1) Functional Test
+```
+pytest .\exchange_rates\test_exchange_rate.py
+```
+#### 2) API Mock Test
+```
+pytest .\exchange_rates\test_exchange_rate_api_request.py
+```
